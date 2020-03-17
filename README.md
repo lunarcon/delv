@@ -9,7 +9,7 @@
 <li>Can launch apps and bring apps to front
 <li>Displays your pinned apps and can launch them
 <li>Emulates the real thing as close as possible
-<li>Hides your actual taskbar (literally, this is not like "auto hide taskbar" - if you dont exit the app properly,<br>your taskbar wont come back.)
+<li>Hides your actual taskbar (literally, this is not like "auto hide taskbar" - if you dont exit the app properly,<br>your taskbar wont come back on its own!)
 </ul><br>
 <h3>Limitations</h3>
 <ul>
