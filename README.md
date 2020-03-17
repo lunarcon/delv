@@ -1,5 +1,5 @@
 # DelV
-## A working taskbar replacement, mimicking the windows 10 taskbar.
+## A working taskbar replacement, mimicking the Windows 10 taskbar down to the acrylic.
 
 <div align="center"><img src="preview.png"></div><br>
 <h3>Features</h3>
