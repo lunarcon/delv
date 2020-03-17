@@ -22,3 +22,5 @@ A: Either restart the app and then close it using the 'X' button on it or log ou
 <br>
 <b>Q: How do i enable acrylic in my win32 app?</b><br>
 A: See <a href="https://github.com/at-adityavikram/Acrylic4VBWIn32">here</a> for a comprehensive demonstration.<br>
+<br>
+<h3>Download pre-built <a href="/releases">here.</a></h3>
