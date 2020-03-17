@@ -6,6 +6,7 @@
 <ul>
 <li><b>Supports Acrylic on supported versions of windows 10</b>
 <li>Functional buttons (Start,Search,Cortana,Timeline/Task View,Network,Whiteboard,Clock,Action Center,Peek Desktop)
+<li>Gets all the open windows (like the normal taskbar)
 <li>Can launch apps and bring apps to front
 <li>Displays your pinned apps and can launch them
 <li>Emulates the real thing as close as possible
@@ -15,6 +16,7 @@
 <ul>
 <li><h4><i>Dont try to count them there are lots</i></h4>
 <li>Its.. umm.. <b>s l o w</b>
+<li>UWP apps sometimes do not show up, and are not pinned. (You can pin a shortcut of the UWP app, however, and wont notice any difference)
 </ul>
 <h3>FAQ</h3>
 <b>Q: I closed the app (through task manager or alt+f4 or something) and now my actual taskbar has dissapeared. How do i fix it?</b><br>
