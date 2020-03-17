@@ -4,10 +4,13 @@ Imports System.IO
 Imports DelV.UX
 Imports System.Text
 Imports System.Management
+Imports System.Threading
 
 Public Class acrylic_panel
     Dim timelinestr As String = ""
     Dim pinnedapps As String = CStr("C:\Users\" & GetUserName() & "\AppData\Roaming\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar\")
+    Dim fwatcher As FileSystemWatcher = New FileSystemWatcher()
+
     Protected Overrides ReadOnly Property CreateParams As CreateParams
         Get
             Const CS_DROPSHADOW As Integer = &H20000
@@ -49,6 +52,7 @@ Public Class acrylic_panel
     Public Sub ShowDesktop()
         keybd_event(VK_LWIN, 0, 0, 0)
         keybd_event(77, 0, 0, 0)
+        keybd_event(77, 0, KEYEVENTF_KEYUP, 0)
         keybd_event(VK_LWIN, 0, KEYEVENTF_KEYUP, 0)
     End Sub
     Private Declare Sub keybd_event Lib "user32" (ByVal bVk As Byte, ByVal bScan As Byte, ByVal dwFlags As Long, ByVal dwExtraInfo As Long)
@@ -108,6 +112,7 @@ Public Class acrylic_panel
                         btx.Name = process.ProcessName
                         btx.Dock = DockStyle.Left
                         btx.Button1.Image = appicon
+                        btx.Menu.Items.Item(2).Visible = False
                         Rescale(0.45, appicon, btx)
                         btx.Margin = New Padding(10, 0, 0, 0)
                         AppsPanel.Controls.Add(btx)
@@ -142,21 +147,28 @@ Public Class acrylic_panel
         Return ExtractLargeIconFromFile.ShellEx.GetBitmapFromFilePath(fname, size)
 #Enable Warning BC42104
     End Function
-    Dim l1 As New ListBox
     Private Sub get_pinned_apps(filepath As String)
+        Try
+            For Each i As Control In pnned_panel.Controls
+                pnned_panel.Controls.Remove(i)
+            Next
+        Catch ex As Exception
+
+        End Try
         If Not filepath Is Nothing AndAlso Directory.Exists(filepath) Then
             For Each file As String In Directory.GetFiles(filepath)
                 If file.Contains(".lnk") Then
                     Dim btx As New taskbar_button
                     Dim appicon = AddIcon(file, 1)
                     btx.Tag = file
-                    l1.Items.Add(NativeMethods.GetLnkTarget(file.ToString))
                     btx.BackColor = Color.Transparent
                     'btx.Button1.FlatStyle = FlatStyle.Flat
                     btx.Button1.BackColor = Color.FromArgb(5, 0, 0, 0)
                     btx.Size = New Size(50, 42)
                     btx.Name = Path.GetFileNameWithoutExtension(file)
                     btx.Dock = DockStyle.Left
+                    btx.Menu.Items.Item(1).Visible = False
+                    btx.Menu.Items.Item(3).Visible = False
                     Rescale(0.45, appicon, btx)
                     btx.Margin = New Padding(10, 0, 0, 0)
                     pnned_panel.Controls.Add(btx)
@@ -172,6 +184,9 @@ Public Class acrylic_panel
         SetWindowPos(intReturn, 0, 0, 0, 0, 0, SWP_HIDEWINDOW)
         EnableBlur()
         get_pinned_apps(pinnedapps)
+        fwatcher.Path = pinnedapps
+        fwatcher.NotifyFilter = NotifyFilters.LastWrite Or NotifyFilters.FileName
+        fwatcher.EnableRaisingEvents = True
     End Sub
 
     Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
@@ -246,7 +261,6 @@ Public Class acrylic_panel
         SetWindowCompositionAttribute(windowHelper.Handle, data)
         Marshal.FreeHGlobal(accentPtr)
     End Sub
-
 
     Public Function GetWindowIcon(ByVal windowHandle As IntPtr) As Image
         Try

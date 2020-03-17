@@ -74,4 +74,16 @@ Public Class taskbar_button
     Private Sub Button1_MouseLeave(sender As Object, e As EventArgs) Handles Button1.MouseLeave
         Label1.Dock = DockStyle.None
     End Sub
+
+    Private Sub CloseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CloseToolStripMenuItem.Click
+        Try
+            Dim proc = Process.GetProcessById(Tag)
+            proc.Kill()
+        Catch
+        End Try
+    End Sub
+
+    Private Sub OpenFileLocationToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenFileLocationToolStripMenuItem.Click
+
+    End Sub
 End Class

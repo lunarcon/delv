@@ -79,12 +79,16 @@ Friend Class NativeMethods
     Public Shared Function IsWindowVisible(ByVal IntPtr As IntPtr) As Boolean
     End Function
     Public Shared Function GetLnkTarget(lnkPath As String) As String
-        Dim shl = New Shell32.Shell()
-        lnkPath = System.IO.Path.GetFullPath(lnkPath)
-        Dim dir = shl.[NameSpace](System.IO.Path.GetDirectoryName(lnkPath))
-        Dim itm = dir.Items().Item(System.IO.Path.GetFileName(lnkPath))
-        Dim lnk = DirectCast(itm.GetLink, Shell32.ShellLinkObject)
-        Return lnk.Target.Path
+        Try
+            Dim shl = New Shell32.Shell()
+            lnkPath = System.IO.Path.GetFullPath(lnkPath)
+            Dim dir = shl.[NameSpace](System.IO.Path.GetDirectoryName(lnkPath))
+            Dim itm = dir.Items().Item(System.IO.Path.GetFileName(lnkPath))
+            Dim lnk = DirectCast(itm.GetLink, Shell32.ShellLinkObject)
+            Return lnk.Target.Path
+        Catch
+            Return Nothing
+        End Try
     End Function
 End Class
 
