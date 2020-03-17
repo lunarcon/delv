@@ -80,7 +80,6 @@ Friend Class NativeMethods
     End Function
     Public Shared Function GetLnkTarget(lnkPath As String) As String
         Dim shl = New Shell32.Shell()
-        ' Move this to class scope
         lnkPath = System.IO.Path.GetFullPath(lnkPath)
         Dim dir = shl.[NameSpace](System.IO.Path.GetDirectoryName(lnkPath))
         Dim itm = dir.Items().Item(System.IO.Path.GetFileName(lnkPath))

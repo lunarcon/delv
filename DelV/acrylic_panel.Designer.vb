@@ -332,6 +332,7 @@ Partial Class acrylic_panel
         Me.Button8.ForeColor = System.Drawing.SystemColors.ControlLightLight
         Me.Button8.Location = New System.Drawing.Point(28, 0)
         Me.Button8.Name = "Button8"
+        Me.Button8.Padding = New System.Windows.Forms.Padding(0, 3, 0, 0)
         Me.Button8.Size = New System.Drawing.Size(29, 43)
         Me.Button8.TabIndex = 7
         Me.Button8.Text = ""
