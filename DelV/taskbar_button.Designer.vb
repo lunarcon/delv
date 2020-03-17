@@ -38,6 +38,8 @@ Partial Class taskbar_button
         Me.Button1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(5, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.Button1.FlatAppearance.BorderSize = 0
+        Me.Button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer))
+        Me.Button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(100, Byte), Integer), CType(CType(100, Byte), Integer), CType(CType(100, Byte), Integer))
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button1.Location = New System.Drawing.Point(0, 0)
         Me.Button1.Name = "Button1"
@@ -65,7 +67,7 @@ Partial Class taskbar_button
         Me.Menu.MinimumSize = New System.Drawing.Size(250, 0)
         Me.Menu.Name = "Menu"
         Me.Menu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.Menu.Size = New System.Drawing.Size(250, 168)
+        Me.Menu.Size = New System.Drawing.Size(250, 146)
         '
         'OpenFileLocationToolStripMenuItem
         '
