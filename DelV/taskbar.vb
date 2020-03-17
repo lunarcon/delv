@@ -5,8 +5,9 @@ Imports DelV.UX
 Imports System.Text
 Imports System.Management
 Imports System.Threading
+Imports Microsoft.Win32
 
-Public Class acrylic_panel
+Public Class taskbar
     Dim timelinestr As String = ""
     Dim pinnedapps As String = CStr("C:\Users\" & GetUserName() & "\AppData\Roaming\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar\")
     Dim fwatcher As FileSystemWatcher = New FileSystemWatcher()
@@ -248,7 +249,11 @@ Public Class acrylic_panel
     Friend Sub EnableBlur()
         Dim windowHelper = Me
         Dim accent = New AccentPolicy()
-        accent.AccentState = AccentState.ACCENT_ENABLE_ACRYLICBLURBEHIND
+        If IsWindows10() Then
+            accent.AccentState = AccentState.ACCENT_ENABLE_ACRYLICBLURBEHIND
+        Else
+            accent.AccentState = AccentState.ACCENT_ENABLE_BLURBEHIND
+        End If
         accent.GradientColor = _blurBackgroundColor
         accent.AccentFlags = &H20 Or &H40 Or &H80 Or &H100
         Dim accentStructSize = Marshal.SizeOf(accent)
@@ -403,4 +408,9 @@ Public Class acrylic_panel
         SafeClose()
         Close()
     End Sub
+    Private Shared Function IsWindows10() As Boolean
+        Dim reg = Registry.LocalMachine.OpenSubKey("SOFTWARE\Microsoft\Windows NT\CurrentVersion")
+        Dim productName As String = CStr(reg.GetValue("ProductName"))
+        Return productName.StartsWith("Windows 10")
+    End Function
 End Class

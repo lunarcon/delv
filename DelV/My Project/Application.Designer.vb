@@ -32,7 +32,7 @@ Namespace My
 
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()> _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.DelV.acrylic_panel
+            Me.MainForm = Global.DelV.taskbar
         End Sub
     End Class
 End Namespace

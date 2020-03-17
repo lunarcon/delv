@@ -74,11 +74,11 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="acrylic_panel.vb">
+    <Compile Include="taskbar.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="acrylic_panel.Designer.vb">
-      <DependentUpon>acrylic_panel.vb</DependentUpon>
+    <Compile Include="taskbar.Designer.vb">
+      <DependentUpon>taskbar.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Shell\IImageList.vb" />
@@ -116,12 +116,11 @@
     <Compile Include="taskbar_button.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="TranspUX.vb" />
     <Compile Include="UX.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="acrylic_panel.resx">
-      <DependentUpon>acrylic_panel.vb</DependentUpon>
+    <EmbeddedResource Include="taskbar.resx">
+      <DependentUpon>taskbar.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
