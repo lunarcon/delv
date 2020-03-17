@@ -5,7 +5,7 @@
 <h3>Features</h3>
 <ul>
 <li><b>Supports Acrylic on supported versions of windows 10</b>
-<li>Functional buttons (Start,Search,Cortana,Timeline/Task View,Wifi,Whiteboard,Clock,Action Center,Peek Desktop)
+<li>Functional buttons (Start,Search,Cortana,Timeline/Task View,Network,Whiteboard,Clock,Action Center,Peek Desktop)
 <li>Can launch apps and bring apps to front
 <li>Displays your pinned apps and can launch them
 <li>Emulates the real thing as close as possible
