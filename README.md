@@ -18,7 +18,7 @@
 </ul>
 <h3>FAQ</h3>
 <b>Q: I closed the app (through task manager or alt+f4 or something) and now my actual taskbar has dissapeared. How do i fix it?</b><br>
-A: Either restart the app and then close it using the 'X' button on it or log out and then log back in or restart your computer.<br>
+A: Either restart the app and then close it using the 'X' button on it <b>or</b> log out and then log back in <b>or</b> restart your computer.<br>
 <br>
 <b>Q: How do i enable acrylic in my win32 app?</b><br>
 A: See <a href="https://github.com/at-adityavikram/Acrylic4VBWIn32">here</a> for a comprehensive demonstration.<br>
