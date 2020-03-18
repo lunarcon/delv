@@ -2,6 +2,7 @@
 Imports System.IO
 Imports System.Runtime.InteropServices
 
+
 Namespace ExtractLargeIconFromFile
     Public Class ShellEx
         Private Const SHGFI_SMALLICON As Integer = &H1
@@ -97,5 +98,12 @@ Namespace ExtractLargeIconFromFile
             hres = iml.GetIcon(iconIndex, ILD_TRANSPARENT, hIcon)
             Return hIcon
         End Function
+        <DllImport("winmm.dll")>
+        Public Shared Function waveOutSetVolume(ByVal deviceID As UInt32, ByVal Volume As UInt32) As Long
+        End Function
+        <DllImport("winmm.dll")>
+        Public Shared Function waveOutGetVolume(ByVal deviceID As UInt32, <Out> ByRef Volume As UInt32) As Long
+        End Function
     End Class
+
 End Namespace

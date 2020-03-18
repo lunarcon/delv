@@ -6,6 +6,7 @@ Imports System.Text
 Imports System.Management
 Imports System.Threading
 Imports Microsoft.Win32
+Imports DelV.ExtractLargeIconFromFile.ShellEx
 
 Public Class taskbar
     Dim timelinestr As String = ""
@@ -188,6 +189,8 @@ Public Class taskbar
         fwatcher.Path = pinnedapps
         fwatcher.NotifyFilter = NotifyFilters.LastWrite Or NotifyFilters.FileName
         fwatcher.EnableRaisingEvents = True
+        Dim volume As Integer = Math.Ceiling(3 * Val(GetMasterVolume.ToString))
+        Button9.Text = vol_str.Chars(volume)
     End Sub
 
     Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
@@ -309,7 +312,11 @@ Public Class taskbar
             Catch ec As Exception
             End Try
         Next
-        Return syslist.Items.Item(16)
+        Try
+            Return syslist.Items.Item(16)
+        Catch
+            Return "0"
+        End Try
 #Disable Warning BC42105
     End Function
 #Enable Warning BC42105
@@ -413,4 +420,9 @@ Public Class taskbar
         Dim productName As String = CStr(reg.GetValue("ProductName"))
         Return productName.StartsWith("Windows 10")
     End Function
+    Dim vol_str As String = ""
+
+    Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
+
+    End Sub
 End Class
