@@ -7,8 +7,15 @@ Imports System.Management
 Imports System.Threading
 Imports Microsoft.Win32
 Imports DelV.ExtractLargeIconFromFile.ShellEx
+Imports System.Data
+Imports System.Windows.Automation
+Imports UIAutomationClient
 
 Public Class taskbar
+    <DllImport("User32.dll", SetLastError:=True, CharSet:=CharSet.Unicode)>
+    Public Shared Function FindWindowEx(ByVal hwndParent As IntPtr, ByVal hwndChildAfter As IntPtr, ByVal lpszClass As String, ByVal lpszWindow As String) As IntPtr
+
+    End Function
     Dim timelinestr As String = ""
     Dim pinnedapps As String = CStr("C:\Users\" & GetUserName() & "\AppData\Roaming\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar\")
     Dim fwatcher As FileSystemWatcher = New FileSystemWatcher()
@@ -200,6 +207,7 @@ Public Class taskbar
     Public Sub SafeClose()
         Dim intReturn As Integer = FindWindow("Shell_traywnd", "")
         SetWindowPos(intReturn, 0, 0, 0, 0, 0, SWP_SHOWWINDOW)
+        BringToFront()
     End Sub
 
     Friend Enum AccentState
@@ -341,8 +349,7 @@ Public Class taskbar
 
     End Sub
     Private Sub Panel2_Click(sender As Object, e As EventArgs) Handles Panel2.Click
-        SafeClose()
-        Close()
+
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -380,6 +387,7 @@ Public Class taskbar
 
     Private Sub Systime_Click(sender As Object, e As EventArgs) Handles systime.Click
         Shell("explorer.exe outlookcal:")
+        ' getontbar("Clock", "Calendar")
     End Sub
 
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
@@ -395,6 +403,7 @@ Public Class taskbar
 
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
         Shell("explorer.exe ms-whiteboard-cmd:")
+        'getontbar("Ink", "Workspace")
     End Sub
 
     Private Sub Timer2_Tick(sender As Object, e As EventArgs) Handles Timer2.Tick
@@ -409,6 +418,8 @@ Public Class taskbar
         ElseIf s > 70 And s <= 100 Then
             Button5.Text = ""
         End If
+        Dim volume As Integer = Math.Ceiling(3 * Val(GetMasterVolume.ToString))
+        Button9.Text = vol_str.Chars(volume)
     End Sub
 
     Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
@@ -421,8 +432,42 @@ Public Class taskbar
         Return productName.StartsWith("Windows 10")
     End Function
     Dim vol_str As String = ""
-
+    Dim hWndTray As IntPtr = FindWindow("Shell_TrayWnd", Nothing)
+    Dim hWndTrayNotify As IntPtr = FindWindowEx(hWndTray, IntPtr.Zero, "TrayNotifyWnd", Nothing)
+    Dim hWndSysPager As IntPtr = FindWindowEx(hWndTrayNotify, IntPtr.Zero, "SysPager", Nothing)
+    Dim hWndToolbar As IntPtr = FindWindowEx(hWndSysPager, IntPtr.Zero, "ToolbarWindow32", Nothing)
     Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
+        getontbar("Speaker", "Speakers")
+    End Sub
 
+    Private Sub getontbar(alias1 As String, alias2 As String)
+        SafeClose()
+        Width = Width - 250
+        Dim ae1 As AutomationElement = AutomationElement.FromHandle(hWndToolbar)
+        Dim aeCollection As AutomationElementCollection = ae1.FindAll(UIAutomationClient.TreeScope.TreeScope_Subtree, Condition.TrueCondition)
+        For Each aeChild As AutomationElement In aeCollection
+            Dim sName As String = aeChild.Current.Name
+            If sName.Contains(alias1) OrElse sName.Contains(alias2) Then
+                Dim buttonPattern As Object = Nothing
+                If aeChild.TryGetCurrentPattern(InvokePattern.Pattern, buttonPattern) Then
+                    CType(buttonPattern, InvokePattern).Invoke()
+                End If
+            End If
+        Next
+        Width = Width + 250
+        Dim intReturn As Integer = FindWindow("Shell_traywnd", "")
+        SetWindowPos(intReturn, 0, 0, 0, 0, 0, SWP_HIDEWINDOW)
+    End Sub
+
+    Private Sub Panel2_Paint(sender As Object, e As PaintEventArgs) Handles Panel2.Paint
+
+    End Sub
+
+    Private Sub Button10_Click(sender As Object, e As EventArgs) Handles Button10.Click
+        keybd_event(VK_LWIN, 0, 0, 0)
+        keybd_event(Keys.Space, 0, 0, 0)
+        Thread.Sleep(300)
+        keybd_event(Keys.Space, 0, KEYEVENTF_KEYUP, 0)
+        keybd_event(VK_LWIN, 0, KEYEVENTF_KEYUP, 0)
     End Sub
 End Class

@@ -28,6 +28,7 @@ Partial Class taskbar
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Button8 = New System.Windows.Forms.Button()
         Me.Button5 = New System.Windows.Forms.Button()
+        Me.Button9 = New System.Windows.Forms.Button()
         Me.Button7 = New System.Windows.Forms.Button()
         Me.systime = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
@@ -42,7 +43,7 @@ Partial Class taskbar
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
-        Me.Button9 = New System.Windows.Forms.Button()
+        Me.Button10 = New System.Windows.Forms.Button()
         Me.fore_panel.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -66,7 +67,7 @@ Partial Class taskbar
         Me.AppsPanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.AppsPanel.Location = New System.Drawing.Point(184, 0)
         Me.AppsPanel.Name = "AppsPanel"
-        Me.AppsPanel.Size = New System.Drawing.Size(1192, 43)
+        Me.AppsPanel.Size = New System.Drawing.Size(1142, 43)
         Me.AppsPanel.TabIndex = 0
         '
         'Panel2
@@ -76,15 +77,16 @@ Partial Class taskbar
         Me.Panel2.Controls.Add(Me.Button5)
         Me.Panel2.Controls.Add(Me.Button9)
         Me.Panel2.Controls.Add(Me.Button7)
+        Me.Panel2.Controls.Add(Me.Button10)
         Me.Panel2.Controls.Add(Me.systime)
         Me.Panel2.Controls.Add(Me.Button1)
         Me.Panel2.Controls.Add(Me.Panel3)
         Me.Panel2.Controls.Add(Me.Label1)
         Me.Panel2.Controls.Add(Me.Peek)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel2.Location = New System.Drawing.Point(1376, 0)
+        Me.Panel2.Location = New System.Drawing.Point(1326, 0)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(231, 43)
+        Me.Panel2.Size = New System.Drawing.Size(281, 43)
         Me.Panel2.TabIndex = 2
         '
         'Button8
@@ -98,7 +100,7 @@ Partial Class taskbar
         Me.Button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button8.Font = New System.Drawing.Font("Segoe MDL2 Assets", 11.25!)
         Me.Button8.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.Button8.Location = New System.Drawing.Point(-1, 0)
+        Me.Button8.Location = New System.Drawing.Point(12, 0)
         Me.Button8.Name = "Button8"
         Me.Button8.Padding = New System.Windows.Forms.Padding(0, 3, 0, 0)
         Me.Button8.Size = New System.Drawing.Size(29, 43)
@@ -118,13 +120,32 @@ Partial Class taskbar
         Me.Button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button5.Font = New System.Drawing.Font("Segoe MDL2 Assets", 12.25!)
         Me.Button5.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.Button5.Location = New System.Drawing.Point(28, 0)
+        Me.Button5.Location = New System.Drawing.Point(41, 0)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(29, 43)
         Me.Button5.TabIndex = 4
         Me.Button5.Text = ""
         Me.Button5.UseCompatibleTextRendering = True
         Me.Button5.UseVisualStyleBackColor = False
+        '
+        'Button9
+        '
+        Me.Button9.BackColor = System.Drawing.Color.FromArgb(CType(CType(5, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.Button9.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Button9.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(5, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.Button9.FlatAppearance.BorderSize = 0
+        Me.Button9.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer))
+        Me.Button9.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(100, Byte), Integer), CType(CType(100, Byte), Integer), CType(CType(100, Byte), Integer))
+        Me.Button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button9.Font = New System.Drawing.Font("Segoe MDL2 Assets", 12.25!)
+        Me.Button9.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.Button9.Location = New System.Drawing.Point(70, 0)
+        Me.Button9.Name = "Button9"
+        Me.Button9.Size = New System.Drawing.Size(29, 43)
+        Me.Button9.TabIndex = 8
+        Me.Button9.Text = ""
+        Me.Button9.UseCompatibleTextRendering = True
+        Me.Button9.UseVisualStyleBackColor = False
         '
         'Button7
         '
@@ -137,7 +158,7 @@ Partial Class taskbar
         Me.Button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button7.Font = New System.Drawing.Font("Segoe MDL2 Assets", 12.25!)
         Me.Button7.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.Button7.Location = New System.Drawing.Point(86, 0)
+        Me.Button7.Location = New System.Drawing.Point(99, 0)
         Me.Button7.Name = "Button7"
         Me.Button7.Size = New System.Drawing.Size(36, 43)
         Me.Button7.TabIndex = 5
@@ -158,7 +179,7 @@ Partial Class taskbar
         Me.systime.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.systime.Font = New System.Drawing.Font("Segoe UI", 9.25!)
         Me.systime.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.systime.Location = New System.Drawing.Point(122, 0)
+        Me.systime.Location = New System.Drawing.Point(172, 0)
         Me.systime.Name = "systime"
         Me.systime.Padding = New System.Windows.Forms.Padding(7, 0, 0, 0)
         Me.systime.Size = New System.Drawing.Size(58, 43)
@@ -179,7 +200,7 @@ Partial Class taskbar
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button1.Font = New System.Drawing.Font("Segoe MDL2 Assets", 12.25!)
         Me.Button1.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.Button1.Location = New System.Drawing.Point(180, 0)
+        Me.Button1.Location = New System.Drawing.Point(230, 0)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(38, 43)
         Me.Button1.TabIndex = 0
@@ -191,16 +212,16 @@ Partial Class taskbar
         '
         Me.Panel3.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel3.Location = New System.Drawing.Point(218, 0)
+        Me.Panel3.Location = New System.Drawing.Point(268, 0)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(6, 43)
         Me.Panel3.TabIndex = 6
         '
         'Label1
         '
-        Me.Label1.BackColor = System.Drawing.Color.Gray
+        Me.Label1.BackColor = System.Drawing.Color.FromArgb(CType(CType(200, Byte), Integer), CType(CType(100, Byte), Integer), CType(CType(100, Byte), Integer), CType(CType(100, Byte), Integer))
         Me.Label1.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Label1.Location = New System.Drawing.Point(224, 0)
+        Me.Label1.Location = New System.Drawing.Point(274, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(1, 43)
         Me.Label1.TabIndex = 3
@@ -217,7 +238,7 @@ Partial Class taskbar
         Me.Peek.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Peek.Font = New System.Drawing.Font("Segoe UI", 9.25!)
         Me.Peek.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.Peek.Location = New System.Drawing.Point(225, 0)
+        Me.Peek.Location = New System.Drawing.Point(275, 0)
         Me.Peek.Name = "Peek"
         Me.Peek.Padding = New System.Windows.Forms.Padding(7, 0, 0, 0)
         Me.Peek.Size = New System.Drawing.Size(6, 43)
@@ -341,24 +362,24 @@ Partial Class taskbar
         Me.Timer2.Enabled = True
         Me.Timer2.Interval = 1000
         '
-        'Button9
+        'Button10
         '
-        Me.Button9.BackColor = System.Drawing.Color.FromArgb(CType(CType(5, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Button9.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Button9.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(5, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Button9.FlatAppearance.BorderSize = 0
-        Me.Button9.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer))
-        Me.Button9.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(100, Byte), Integer), CType(CType(100, Byte), Integer), CType(CType(100, Byte), Integer))
-        Me.Button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button9.Font = New System.Drawing.Font("Segoe MDL2 Assets", 12.25!)
-        Me.Button9.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.Button9.Location = New System.Drawing.Point(57, 0)
-        Me.Button9.Name = "Button9"
-        Me.Button9.Size = New System.Drawing.Size(29, 43)
-        Me.Button9.TabIndex = 8
-        Me.Button9.Text = ""
-        Me.Button9.UseCompatibleTextRendering = True
-        Me.Button9.UseVisualStyleBackColor = False
+        Me.Button10.BackColor = System.Drawing.Color.FromArgb(CType(CType(5, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.Button10.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Button10.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(5, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.Button10.FlatAppearance.BorderSize = 0
+        Me.Button10.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer))
+        Me.Button10.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(100, Byte), Integer), CType(CType(100, Byte), Integer), CType(CType(100, Byte), Integer))
+        Me.Button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button10.Font = New System.Drawing.Font("Segoe UI", 9.25!)
+        Me.Button10.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.Button10.Location = New System.Drawing.Point(135, 0)
+        Me.Button10.Name = "Button10"
+        Me.Button10.Size = New System.Drawing.Size(37, 43)
+        Me.Button10.TabIndex = 9
+        Me.Button10.Text = "ENG"
+        Me.Button10.UseCompatibleTextRendering = True
+        Me.Button10.UseVisualStyleBackColor = False
         '
         'taskbar
         '
@@ -402,4 +423,5 @@ Partial Class taskbar
     Friend WithEvents Timer2 As Timer
     Friend WithEvents Button8 As Button
     Friend WithEvents Button9 As Button
+    Friend WithEvents Button10 As Button
 End Class

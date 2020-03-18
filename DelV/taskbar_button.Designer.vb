@@ -67,7 +67,7 @@ Partial Class taskbar_button
         Me.Menu.MinimumSize = New System.Drawing.Size(250, 0)
         Me.Menu.Name = "Menu"
         Me.Menu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.Menu.Size = New System.Drawing.Size(250, 146)
+        Me.Menu.Size = New System.Drawing.Size(250, 168)
         '
         'OpenFileLocationToolStripMenuItem
         '
