@@ -30,6 +30,7 @@ Partial Class taskbar
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Button9 = New System.Windows.Forms.Button()
         Me.Button7 = New System.Windows.Forms.Button()
+        Me.Button10 = New System.Windows.Forms.Button()
         Me.systime = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Panel3 = New System.Windows.Forms.Panel()
@@ -43,7 +44,6 @@ Partial Class taskbar
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
-        Me.Button10 = New System.Windows.Forms.Button()
         Me.fore_panel.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -165,6 +165,25 @@ Partial Class taskbar
         Me.Button7.Text = ""
         Me.Button7.UseCompatibleTextRendering = True
         Me.Button7.UseVisualStyleBackColor = False
+        '
+        'Button10
+        '
+        Me.Button10.BackColor = System.Drawing.Color.FromArgb(CType(CType(5, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.Button10.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Button10.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(5, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.Button10.FlatAppearance.BorderSize = 0
+        Me.Button10.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer))
+        Me.Button10.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(100, Byte), Integer), CType(CType(100, Byte), Integer), CType(CType(100, Byte), Integer))
+        Me.Button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button10.Font = New System.Drawing.Font("Segoe UI", 9.25!)
+        Me.Button10.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.Button10.Location = New System.Drawing.Point(135, 0)
+        Me.Button10.Name = "Button10"
+        Me.Button10.Size = New System.Drawing.Size(37, 43)
+        Me.Button10.TabIndex = 9
+        Me.Button10.Text = "ENG"
+        Me.Button10.UseCompatibleTextRendering = True
+        Me.Button10.UseVisualStyleBackColor = False
         '
         'systime
         '
@@ -361,25 +380,6 @@ Partial Class taskbar
         '
         Me.Timer2.Enabled = True
         Me.Timer2.Interval = 1000
-        '
-        'Button10
-        '
-        Me.Button10.BackColor = System.Drawing.Color.FromArgb(CType(CType(5, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Button10.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Button10.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(5, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Button10.FlatAppearance.BorderSize = 0
-        Me.Button10.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer), CType(CType(200, Byte), Integer))
-        Me.Button10.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(100, Byte), Integer), CType(CType(100, Byte), Integer), CType(CType(100, Byte), Integer))
-        Me.Button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button10.Font = New System.Drawing.Font("Segoe UI", 9.25!)
-        Me.Button10.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.Button10.Location = New System.Drawing.Point(135, 0)
-        Me.Button10.Name = "Button10"
-        Me.Button10.Size = New System.Drawing.Size(37, 43)
-        Me.Button10.TabIndex = 9
-        Me.Button10.Text = "ENG"
-        Me.Button10.UseCompatibleTextRendering = True
-        Me.Button10.UseVisualStyleBackColor = False
         '
         'taskbar
         '

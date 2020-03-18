@@ -440,6 +440,30 @@ Public Class taskbar
         getontbar("Speaker", "Speakers")
     End Sub
 
+    Private Sub getontbar(alias1 As String, alias2 As String)
+        SafeClose()
+        Width = Width - 250
+        Dim ae1 As AutomationElement = AutomationElement.FromHandle(hWndToolbar)
+        Dim aeCollection As AutomationElementCollection = ae1.FindAll(UIAutomationClient.TreeScope.TreeScope_Subtree, Condition.TrueCondition)
+        For Each aeChild As AutomationElement In aeCollection
+            Dim sName As String = aeChild.Current.Name
+            If sName.Contains(alias1) OrElse sName.Contains(alias2) Then
+                Dim buttonPattern As Object = Nothing
+                If aeChild.TryGetCurrentPattern(InvokePattern.Pattern, buttonPattern) Then
+                    CType(buttonPattern, InvokePattern).Invoke()
+                End If
+            End If
+        Next
+        Width = Width + 250
+        Dim intReturn As Integer = FindWindow("Shell_traywnd", "")
+        SetWindowPos(intReturn, 0, 0, 0, 0, 0, SWP_HIDEWINDOW)
+    End Sub
 
-
+    Private Sub Button10_Click(sender As Object, e As EventArgs) Handles Button10.Click
+        keybd_event(VK_LWIN, 0, 0, 0)
+        keybd_event(Keys.Space, 0, 0, 0)
+        Thread.Sleep(350)
+        keybd_event(Keys.Space, 0, KEYEVENTF_KEYUP, 0)
+        keybd_event(VK_LWIN, 0, KEYEVENTF_KEYUP, 0)
+    End Sub
 End Class
