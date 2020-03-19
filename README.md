@@ -1,5 +1,6 @@
 # DelV
 ## A working taskbar replacement, mimicking the Windows 10 taskbar down to the acrylic.
+### No, it's not UWP
 
 <div align="center"><img src="preview.png"></div><br>
 <h3>Features</h3>
