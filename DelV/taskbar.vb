@@ -112,8 +112,8 @@ Public Class taskbar
                         End If
                     Next
                     If contains = False Then
-                        Dim xath = GetMainModuleFilepath(process.Id)
-                        Dim appicon = AddIcon(xath, 1)
+                        Dim xath = process.MainModule.FileName 'GetMainModuleFilepath(process.Id)
+                        Dim appicon = AddIcon(xath, 1) 'Icon.ExtractAssociatedIcon(xath).ToBitmap 
                         btx.Label1.Visible = True
                         btx.BackColor = Color.Transparent
                         btx.Button1.BackColor = Color.FromArgb(5, 0, 0, 0)
@@ -240,42 +240,40 @@ Public Class taskbar
         ' ...
     End Enum
 
-    <DllImport("user32.dll")>
-    Friend Shared Function SetWindowCompositionAttribute(ByVal hwnd As IntPtr, ByRef data As WindowCompositionAttributeData) As Integer
-    End Function
+    Friend Declare Function SetWindowCompositionAttribute Lib "user32.dll" (hwnd As IntPtr, ByRef data As WindowCompositionAttributeData) As Integer
 
-    Private _blurOpacity As UInteger = 50
+    Private _blurOpacity As UInteger = 60
 
     Public Property BlurOpacity As Double
         Get
             Return _blurOpacity
         End Get
-        Set(ByVal value As Double)
-            _blurOpacity = CUInt(value)
+        Set(value As Double)
+            _blurOpacity = CUInt(Fix(value))
             EnableBlur()
         End Set
     End Property
-    Private _blurBackgroundColor As UInteger = &HFFFFFF
+
+    Private _blurBackgroundColor As UInteger = &H444444
 
     Friend Sub EnableBlur()
         Dim windowHelper = Me
-        Dim accent = New AccentPolicy()
-        If IsWindows10() Then
-            accent.AccentState = AccentState.ACCENT_ENABLE_ACRYLICBLURBEHIND
-        Else
+        Dim accent As New AccentPolicy With {
+            .AccentState = AccentState.ACCENT_ENABLE_ACRYLICBLURBEHIND,
+            .AccentFlags = 2,
+            .GradientColor = (_blurOpacity << 24) Or (_blurBackgroundColor And &HFFFFFFUI)
+        }
+        If IsWindows10() = False Then
             accent.AccentState = AccentState.ACCENT_ENABLE_BLURBEHIND
         End If
-        accent.GradientColor = _blurBackgroundColor
-        accent.AccentFlags = &H20 Or &H40 Or &H80 Or &H100
-        Dim accentStructSize = Marshal.SizeOf(accent)
-        Dim accentPtr = Marshal.AllocHGlobal(accentStructSize)
-        Marshal.StructureToPtr(accent, accentPtr, False)
-        Dim data = New WindowCompositionAttributeData()
-        data.Attribute = WindowCompositionAttribute.WCA_ACCENT_POLICY
-        data.SizeOfData = accentStructSize
-        data.Data = accentPtr
+        Dim hGc = GCHandle.Alloc(accent, GCHandleType.Pinned)
+        Dim data As New WindowCompositionAttributeData With {
+            .Attribute = WindowCompositionAttribute.WCA_ACCENT_POLICY,
+            .SizeOfData = Marshal.SizeOf(accent),
+            .Data = hGc.AddrOfPinnedObject
+        }
         SetWindowCompositionAttribute(windowHelper.Handle, data)
-        Marshal.FreeHGlobal(accentPtr)
+        hGc.Free()
     End Sub
 
     Public Function GetWindowIcon(ByVal windowHandle As IntPtr) As Image
@@ -426,7 +424,7 @@ Public Class taskbar
         SafeClose()
         Close()
     End Sub
-    Private Shared Function IsWindows10() As Boolean
+    Public Shared Function IsWindows10() As Boolean
         Dim reg = Registry.LocalMachine.OpenSubKey("SOFTWARE\Microsoft\Windows NT\CurrentVersion")
         Dim productName As String = CStr(reg.GetValue("ProductName"))
         Return productName.StartsWith("Windows 10")
@@ -437,7 +435,9 @@ Public Class taskbar
     Dim hWndSysPager As IntPtr = FindWindowEx(hWndTrayNotify, IntPtr.Zero, "SysPager", Nothing)
     Dim hWndToolbar As IntPtr = FindWindowEx(hWndSysPager, IntPtr.Zero, "ToolbarWindow32", Nothing)
     Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
-        getontbar("Speaker", "Speakers")
+        'getontbar("Speaker", "Speakers")
+        SoundCtrl.Show()
+        SoundCtrl.Location = New Point(Screen.PrimaryScreen.WorkingArea.Width - SoundCtrl.Width, Screen.PrimaryScreen.WorkingArea.Height - SoundCtrl.Height)
     End Sub
 
     Private Sub getontbar(alias1 As String, alias2 As String)
