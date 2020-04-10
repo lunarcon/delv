@@ -18,7 +18,7 @@
 </ul>
 <h3>Limitations</h3>
 <ul>
-<li><h4><i>Dont try to count them there are lots</i></h4>
+<li><b><i>Don't try to count them there are lots</i></b>
 <li>Its.. umm.. <b>s l o w</b>
 <li>UWP apps <strike>sometimes do not show up</strike>, and are not pinned. (You can pin a shortcut of the UWP app, however, and won't notice any difference)
 <li> icons of running UWP apps do not show up.
