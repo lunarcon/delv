@@ -20,7 +20,8 @@
 <ul>
 <li><h4><i>Dont try to count them there are lots</i></h4>
 <li>Its.. umm.. <b>s l o w</b>
-<li>UWP apps sometimes do not show up, and are not pinned. (You can pin a shortcut of the UWP app, however, and wont notice any difference)
+<li>UWP apps <strike>sometimes do not show up</strike>, and are not pinned. (You can pin a shortcut of the UWP app, however, and won't notice any difference)
+<li> icons of running UWP apps do not show up.
 </ul>
 <h3>FAQ</h3>
 <b>Q: I closed the app (through task manager or alt+f4 or something) and now my actual taskbar has dissapeared. How do i fix it?</b><br>
