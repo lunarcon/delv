@@ -31,4 +31,4 @@ A: Either restart the app and then close it using the 'X' button on it <b>or</b>
 <b>Q: How do i enable acrylic in my win32 app?</b><br>
 A: See <a href="https://github.com/at-adityavikram/Acrylic4VBWIn32">my other repo</a> for a comprehensive demonstration.<br>
 <br>
-<h3>DelV version 1.0.0.0 has now been released (for x64)! Get it <a href="https://github.com/at-adityavikram/delv/releases">here.</a></h3>
+<h3>DelV version 1.0.1.0 has now been released (for x64)! Get it <a href="https://github.com/at-adityavikram/delv/releases">here.</a></h3>
