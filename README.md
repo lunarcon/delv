@@ -9,7 +9,7 @@
 <ul>
 <li><b>Supports Acrylic on supported versions of Windows 10 (FCU onwards)</b>
 <li>Functional buttons (Start,Search,Cortana,Timeline/Task View,Network,Whiteboard,Clock,Action Center,Peek Desktop,Sound,Input Selector)
-<li>The wifi signal indicator actually does its job.
+<li>The wifi signal indicator actually does its job. 🆕 Now detects ethernet, disconnected states.
 <li>The sound button imitates the actual thing completely, and shows up the volume flyout when clicked. However - the taskbar may momentarily glitch while doing so.
 <li>Manages open windows (like the normal taskbar)
 <li>Can launch apps and bring apps to front
