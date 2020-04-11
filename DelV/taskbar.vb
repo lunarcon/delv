@@ -28,27 +28,31 @@ Public Class taskbar
         Catch
 
         End Try
-        Dim FODLERID_AppsFolder = New Guid("{9E3995AB-1F9C-4F13-B827-48B24B6C7174}")
+        Try
+            Dim FODLERID_AppsFolder = New Guid("{9E3995AB-1F9C-4F13-B827-48B24B6C7174}")
             Dim appsFolder As ShellObject = CType(KnownFolderHelper.FromKnownFolderId(FODLERID_AppsFolder), ShellObject)
-        Dim pinned = CType(appsFolder.ParsingName, String) + "\TaskBar\"
-        For Each file As String In Directory.GetFiles(pinned)
-            If file.Contains(".lnk") Then
-                Dim btx As New taskbar_button
-                Dim appicon = AddIcon(file, 1)
-                btx.Tag = file
-                btx.BackColor = Color.Transparent
-                'btx.Button1.FlatStyle = FlatStyle.Flat
-                btx.Button1.BackColor = Color.FromArgb(5, 0, 0, 0)
-                btx.Size = New Size(50, 42)
-                btx.Name = Path.GetFileNameWithoutExtension(file)
-                btx.Dock = DockStyle.Left
-                btx.Menu.Items.Item(1).Visible = False
-                btx.Menu.Items.Item(3).Visible = False
-                Rescale(0.45, appicon, btx)
-                btx.Margin = New Padding(10, 0, 0, 0)
-                pnned_panel.Controls.Add(btx)
-            End If
-        Next
+            Dim pinned = CType(appsFolder.ParsingName, String) + "\TaskBar\"
+            For Each file As String In Directory.GetFiles(pinned)
+                If file.Contains(".lnk") Then
+                    Dim btx As New taskbar_button
+                    Dim appicon = AddIcon(file, 1)
+                    btx.Tag = file
+                    btx.BackColor = Color.Transparent
+                    'btx.Button1.FlatStyle = FlatStyle.Flat
+                    btx.Button1.BackColor = Color.FromArgb(5, 0, 0, 0)
+                    btx.Size = New Size(50, 42)
+                    btx.Name = Path.GetFileNameWithoutExtension(file)
+                    btx.Dock = DockStyle.Left
+                    btx.Menu.Items.Item(1).Visible = False
+                    btx.Menu.Items.Item(3).Visible = False
+                    Rescale(0.45, appicon, btx)
+                    btx.Margin = New Padding(10, 0, 0, 0)
+                    pnned_panel.Controls.Add(btx)
+                End If
+            Next
+        Catch
+            MsgBox("Could not get pinned apps!")
+        End Try
     End Sub
     Protected Overrides ReadOnly Property CreateParams As CreateParams
         Get

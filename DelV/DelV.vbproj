@@ -93,15 +93,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Toolkit.Forms.UI.Controls, Version=6.0.0.0, Culture=neutral, PublicKeyToken=4aff67a105548ee2, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Toolkit.Forms.UI.Controls.6.0.0\lib\net462\Microsoft.Toolkit.Forms.UI.Controls.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Toolkit.Forms.UI.XamlHost, Version=6.0.0.0, Culture=neutral, PublicKeyToken=4aff67a105548ee2, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Toolkit.Forms.UI.XamlHost.6.0.0\lib\net462\Microsoft.Toolkit.Forms.UI.XamlHost.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Toolkit.Win32.UI.XamlHost.Managed, Version=6.0.0.0, Culture=neutral, PublicKeyToken=4aff67a105548ee2, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Toolkit.UI.XamlHost.6.0.0\lib\net462\Microsoft.Toolkit.Win32.UI.XamlHost.Managed.dll</HintPath>
-    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
