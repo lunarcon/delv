@@ -10,6 +10,7 @@ Imports DelV.ExtractLargeIconFromFile.ShellEx
 Imports System.Data
 Imports System.Windows.Automation
 Imports UIAutomationClient
+Imports Microsoft.WindowsAPICodePack.Shell
 
 Public Class taskbar
     <DllImport("User32.dll", SetLastError:=True, CharSet:=CharSet.Unicode)>
@@ -17,9 +18,31 @@ Public Class taskbar
 
     End Function
     Dim timelinestr As String = ""
-    Dim pinnedapps As String = CStr("C:\Users\" & GetUserName() & "\AppData\Roaming\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar\")
+    'Dim pinnedapps As String = CStr("C:\Users\" & GetUserName() & "\AppData\Roaming\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar\")
     Dim fwatcher As FileSystemWatcher = New FileSystemWatcher()
-
+    Private Sub get_pinned()
+        Dim FODLERID_AppsFolder = New Guid("{9E3995AB-1F9C-4F13-B827-48B24B6C7174}")
+        Dim appsFolder As ShellObject = CType(KnownFolderHelper.FromKnownFolderId(FODLERID_AppsFolder), ShellObject)
+        Dim pinned = CType(appsFolder.ParsingName, String) + "\TaskBar\"
+        For Each file As String In Directory.GetFiles(pinned)
+            If file.Contains(".lnk") Then
+                Dim btx As New taskbar_button
+                Dim appicon = AddIcon(file, 1)
+                btx.Tag = file
+                btx.BackColor = Color.Transparent
+                'btx.Button1.FlatStyle = FlatStyle.Flat
+                btx.Button1.BackColor = Color.FromArgb(5, 0, 0, 0)
+                btx.Size = New Size(50, 42)
+                btx.Name = Path.GetFileNameWithoutExtension(file)
+                btx.Dock = DockStyle.Left
+                btx.Menu.Items.Item(1).Visible = False
+                btx.Menu.Items.Item(3).Visible = False
+                Rescale(0.45, appicon, btx)
+                btx.Margin = New Padding(10, 0, 0, 0)
+                pnned_panel.Controls.Add(btx)
+            End If
+        Next
+    End Sub
     Protected Overrides ReadOnly Property CreateParams As CreateParams
         Get
             Const CS_DROPSHADOW As Integer = &H20000
@@ -156,35 +179,35 @@ Public Class taskbar
         Return ExtractLargeIconFromFile.ShellEx.GetBitmapFromFilePath(fname, size)
 #Enable Warning BC42104
     End Function
-    Private Sub get_pinned_apps(filepath As String)
-        Try
-            For Each i As Control In pnned_panel.Controls
-                pnned_panel.Controls.Remove(i)
-            Next
-        Catch ex As Exception
+    'Private Sub get_pinned_apps(filepath As String)
+    '    Try
+    '        For Each i As Control In pnned_panel.Controls
+    '            pnned_panel.Controls.Remove(i)
+    '        Next
+    '    Catch ex As Exception
 
-        End Try
-        If Not filepath Is Nothing AndAlso Directory.Exists(filepath) Then
-            For Each file As String In Directory.GetFiles(filepath)
-                If file.Contains(".lnk") Then
-                    Dim btx As New taskbar_button
-                    Dim appicon = AddIcon(file, 1)
-                    btx.Tag = file
-                    btx.BackColor = Color.Transparent
-                    'btx.Button1.FlatStyle = FlatStyle.Flat
-                    btx.Button1.BackColor = Color.FromArgb(5, 0, 0, 0)
-                    btx.Size = New Size(50, 42)
-                    btx.Name = Path.GetFileNameWithoutExtension(file)
-                    btx.Dock = DockStyle.Left
-                    btx.Menu.Items.Item(1).Visible = False
-                    btx.Menu.Items.Item(3).Visible = False
-                    Rescale(0.45, appicon, btx)
-                    btx.Margin = New Padding(10, 0, 0, 0)
-                    pnned_panel.Controls.Add(btx)
-                End If
-            Next
-        End If
-    End Sub
+    '    End Try
+    '    If Not filepath Is Nothing AndAlso Directory.Exists(filepath) Then
+    '        For Each file As String In Directory.GetFiles(filepath)
+    '            If file.Contains(".lnk") Then
+    '                Dim btx As New taskbar_button
+    '                Dim appicon = AddIcon(file, 1)
+    '                btx.Tag = file
+    '                btx.BackColor = Color.Transparent
+    '                'btx.Button1.FlatStyle = FlatStyle.Flat
+    '                btx.Button1.BackColor = Color.FromArgb(5, 0, 0, 0)
+    '                btx.Size = New Size(50, 42)
+    '                btx.Name = Path.GetFileNameWithoutExtension(file)
+    '                btx.Dock = DockStyle.Left
+    '                btx.Menu.Items.Item(1).Visible = False
+    '                btx.Menu.Items.Item(3).Visible = False
+    '                Rescale(0.45, appicon, btx)
+    '                btx.Margin = New Padding(10, 0, 0, 0)
+    '                pnned_panel.Controls.Add(btx)
+    '            End If
+    '        Next
+    '    End If
+    'End Sub
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         BringToFront()
         Width = My.Computer.Screen.WorkingArea.Width
@@ -192,10 +215,7 @@ Public Class taskbar
         Dim intReturn As Integer = FindWindow("Shell_traywnd", "")
         SetWindowPos(intReturn, 0, 0, 0, 0, 0, SWP_HIDEWINDOW)
         EnableBlur()
-        get_pinned_apps(pinnedapps)
-        fwatcher.Path = pinnedapps
-        fwatcher.NotifyFilter = NotifyFilters.LastWrite Or NotifyFilters.FileName
-        fwatcher.EnableRaisingEvents = True
+        get_pinned()
         Dim volume As Integer = Math.Ceiling(3 * Val(GetMasterVolume.ToString))
         Button9.Text = vol_str.Chars(volume)
     End Sub
@@ -292,7 +312,7 @@ Public Class taskbar
             Return Nothing
         End Try
     End Function
-    Private Function GetCOnnectionStrength()
+    Private Function GetConnectionStrength()
         Dim proc As ProcessStartInfo = New ProcessStartInfo("cmd.exe")
         Dim pr As Process
         proc.CreateNoWindow = True
@@ -304,7 +324,11 @@ Public Class taskbar
         pr.StandardInput.Close()
         Dim a As String = ""
         a = pr.StandardOutput.ReadToEnd
-        a = a.Remove(0, a.LastIndexOf("Name") - 1)
+        Try
+            a = a.Remove(0, a.LastIndexOf("Name") - 1)
+        Catch
+
+        End Try
         a.Remove(a.LastIndexOf("Hosted"), a.Length - a.LastIndexOf("Hosted"))
         pr.StandardOutput.Close()
         Dim parts As String() = a.ToString.Split(vbNewLine)
@@ -405,7 +429,7 @@ Public Class taskbar
     End Sub
 
     Private Sub Timer2_Tick(sender As Object, e As EventArgs) Handles Timer2.Tick
-        Dim st As String = GetCOnnectionStrength()
+        Dim st As String = GetConnectionStrength()
         Dim s As Integer = Val(st.Replace("%", ""))
         If s <= 25 And s >= 0 Then
             Button5.Text = ""
