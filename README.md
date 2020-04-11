@@ -1,5 +1,7 @@
 # DelV
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg?style=flat-square)](https://www.gnu.org/licenses/gpl-3.0)
+![Activity](https://img.shields.io/github/commit-activity/y/at-adityavikram/delv?style=flat-square)
+![Issues](https://img.shields.io/github/issues-raw/at-adityavikram/delv?style=flat-square)
 ## A working taskbar replacement, mimicking the Windows 10 taskbar down to the acrylic.
 
 <p align="center"><img src="preview.png"></p<br>
