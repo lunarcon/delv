@@ -1,6 +1,7 @@
 # DelV
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg?style=for-the-badge)](https://www.gnu.org/licenses/gpl-3.0)
-[![Issues](https://img.shields.io/github/issues-raw/at-adityavikram/delv?style=for-the-badge)](https://www.github.com/at-adityavikram/delv/issues)
+[![Open Issues](https://img.shields.io/github/issues-raw/at-adityavikram/delv?style=for-the-badge)](https://www.github.com/at-adityavikram/delv/issues)
+[![Closed Issues](https://img.shields.io/github/issues-closed-raw/at-adityavikram/delv?style=for-the-badge)](https://www.github.com/at-adityavikram/delv/issues)
 [![Follow](https://img.shields.io/twitter/follow/RealAV_?style=for-the-badge)](https://twitter.com/RealAV_)
 ## A working taskbar replacement, trying to mimick the Windows 10 taskbar down to the acrylic.
 
