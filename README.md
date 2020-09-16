@@ -4,7 +4,7 @@
 [![Closed Issues](https://img.shields.io/github/issues-closed-raw/at-adityavikram/delv?color=green&style=for-the-badge)](https://www.github.com/at-adityavikram/delv/issues)
 [![Follow](https://img.shields.io/twitter/follow/RealAV_?style=for-the-badge)](https://twitter.com/eclipsevikram)
 ## A working taskbar replacement, trying to mimick the Windows 10 taskbar down to the acrylic.
-### UPDATE: DOESN'T PLAY WELL WITH LATEST WINDOWS 10 UPDATE! PROCEED WITH CAUTION, MEANWHILE I'LL TRY TO FIX IT!
+### UPDATE: DOESN'T PLAY WELL WITH LATEST WINDOWS 10 UPDATE! PROCEED WITH CAUTION.
 <p align="center"><img src="preview.png"></p<br>
 <h3>(No, it's not UWP!)</h3>
 <h3>Features</h3>
