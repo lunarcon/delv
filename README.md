@@ -2,7 +2,7 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg?style=for-the-badge)](https://www.gnu.org/licenses/gpl-3.0)
 [![Open Issues](https://img.shields.io/github/issues-raw/at-adityavikram/delv?style=for-the-badge)](https://www.github.com/at-adityavikram/delv/issues)
 [![Closed Issues](https://img.shields.io/github/issues-closed-raw/at-adityavikram/delv?color=green&style=for-the-badge)](https://www.github.com/at-adityavikram/delv/issues)
-[![Follow](https://img.shields.io/twitter/follow/RealAV_?style=for-the-badge)](https://twitter.com/eclipsevikram)
+[![Follow](https://img.shields.io/twitter/follow/lunarconsumer?style=for-the-badge)](https://twitter.com/lunarconsumer)
 ## A working taskbar replacement, trying to mimick the Windows 10 taskbar down to the acrylic.
 ### UPDATE: DOESN'T PLAY WELL WITH LATEST WINDOWS 10 UPDATE! PROCEED WITH CAUTION.
 <p align="center"><img src="preview.png"></p<br>
