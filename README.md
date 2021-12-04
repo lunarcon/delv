@@ -4,7 +4,7 @@
 [![Closed Issues](https://img.shields.io/github/issues-closed-raw/at-adityavikram/delv?color=green&style=for-the-badge)](https://www.github.com/at-adityavikram/delv/issues)
 [![Follow](https://img.shields.io/twitter/follow/lunarconsumer?style=for-the-badge)](https://twitter.com/lunarconsumer)
 ## A working taskbar replacement, trying to mimick the Windows 10 taskbar down to the acrylic.
-### UPDATE: DOESN'T PLAY WELL WITH LATEST WINDOWS 10 UPDATE! PROCEED WITH CAUTION.
+### UPDATE: There will be updates!
 <p align="center"><img src="preview.png"></p<br>
 <h3>(No, it's not UWP!)</h3>
 <h3>Features</h3>
@@ -25,6 +25,7 @@
 <li>Its.. umm.. <b>s l o w</b>
 <li>UWP apps <strike>sometimes do not show up</strike>, and are not pinned. (You can pin a shortcut of the UWP app, however, and won't notice any difference)
 <li> icons of running UWP apps do not show up.
+<li> taskbar only shows up on primary monitor.
 </ul>
 <h3>FAQ</h3>
 <b>Q: I closed the app (through task manager or alt+f4 or something) and now my actual taskbar has dissapeared. How do i fix it?</b><br>
